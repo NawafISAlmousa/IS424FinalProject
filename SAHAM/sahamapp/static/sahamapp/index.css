@@ -1,0 +1,121 @@
+body {
+    background-image: url('images/643c06b56dea095d51413d5d_Riyadh-Saudi-Arabia-Center-Cityscape-Alternative-Spots.jpg');
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.register-container,.login-container,.edit-container {
+    width: 626px;
+    height: 772px;
+    background-color: #3A8773;
+    margin: 132px auto;
+    border-radius: 10px;
+    box-shadow: 6px 6px 4px black;
+}
+
+.homepage-container {
+    width: 650px;
+    height: 350px;
+    background: #0eae88;
+    margin: 132px auto;
+    border-radius: 10px;
+    border: 5px solid black;
+}
+
+
+.heading {
+    padding: 30px;
+    color: #FFF;
+    text-align: center;
+
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.form-el {
+
+    display: flex;
+    flex-direction: column;
+    width: 432px;
+    margin: 60px auto;
+}
+
+input {
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    border-bottom: 1px solid #D9D9D9;
+    margin-bottom: 60px;
+    font-size: 16px;
+    height: 25px;
+}
+
+input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: #ffffff9c;
+    font-size: 16px;
+}
+
+.btn-container {
+    margin: 50px auto;
+    display: flex;
+    gap: 50px;
+}
+
+.btn {
+    width: 179px;
+    height: 52px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 40px;
+    background: rgba(235, 235, 235, 0.54);
+
+}
+
+.btn:hover {
+    background: rgba(230, 198, 198, 0.211);
+    color: #FFF;
+    cursor: pointer;
+}
+
+
+
+.freelancer-anchor,.customer-anchor{
+    padding: 10px 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+}
+
+.customer-anchor:hover,.freelancer-anchor:hover{
+    color: white;
+    background-color: #032c21;
+    animation: s 0.4s  ;
+}
+
+@keyframes s {
+    0%{
+        background-color: #0e5a46;
+    }
+    100%{
+        background-color: #032c21;
+    }
+}
+
+
+.welcome-container{
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-container{
+    height: 100%;
+}

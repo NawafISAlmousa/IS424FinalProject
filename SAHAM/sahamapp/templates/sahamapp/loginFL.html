@@ -1,0 +1,20 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="login-container">
+    <h1 class="heading">Login</h1>
+    <form class="form-el" id="LoginForm" novalidate action="{%url 'sahamapp:loginFL'%}" method="post">
+        {% csrf_token %}
+        <input placeholder="E-mail" type="email" name="email" id="email" required>
+        <input placeholder="Password" type="password" name="password" id="password" required>
+        <div class="btn-container">
+            <button class="btn" type="submit">Login</button>
+            <a href="{% url 'sahamapp:registerFL'%}"><button class="btn" type="button" >Create Account</button></a> 
+        </div>
+    </form>
+    {% if error %}
+        <script>alert("Email/Password incorrect")</script>
+    {% endif %}
+</div>
+
+{% endblock %}

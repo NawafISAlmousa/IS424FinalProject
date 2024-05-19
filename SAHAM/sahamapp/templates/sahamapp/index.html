@@ -1,0 +1,10 @@
+{% extends 'sahamapp/layout.html' %}
+{% block body%}
+<div class="homepage-container">
+    <div class="welcome-container"> 
+        <h1 class="homepage-heading">Welcome to Saham</h1>
+        <p>Are You A <a href="#" class="customer-anchor">Customer</a> or A <a href="{%url 'sahamapp:loginFL'%}" class="freelancer-anchor">Freelancer</a> ?</p>
+    </div>
+   
+</div>
+{% endblock %}

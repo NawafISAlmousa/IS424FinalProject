@@ -1,0 +1,22 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="register-container">
+    <h1 class="heading">Registration</h1>
+    <form class="form-el" id="registrationForm" novalidate action="{%url 'sahamapp:registerFL'%}" method="post">
+        {% csrf_token %}
+        <input placeholder="E-mail" type="email" name="email" id="email" required>
+        <input placeholder="Password" type="password" name="password" id="password" required>
+        <input placeholder="Username" type="text" name="username" id="username" required>
+        <input placeholder="Describe Your Page" type="text" name="description" id="description" required>
+        <input placeholder="Phone Number ex: 05XXXXXXXX or 009665XXXXXXXX" pattern="(?:\+?0*?966)?0?5[0-9]{8}" type="text" name="phonenumber" id="phonenumber" required oninvalid="this.setCustomValidity('Make sure the format is a valid Saudi Arabian phone number')" oninput="setCustomValidity('')">
+        <div class="btn-container">
+            <button class="btn" type="submit">Register</button>
+           <a href="{% url 'sahamapp:loginFL'%}"> <button class="btn" type="button" onclick="location.href='/login'">Login Instead</button></a>
+           
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'sahamapp/scripts/registerFL.js' %}"></script>
+{% endblock %}
