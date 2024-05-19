@@ -2,7 +2,25 @@
 {% load static %}
 {% block body %}
 <div class="edit-container">
-    
+    <h1>your services:</h1>
+    <div class="service-wrapper">
+        {% for service in services %}
+    <div class="service-el">
+        <h3>{{service.name}}</h3>
+        <h5>{{service.description}}</h5>
+        <h6>{{service.price}} SAR</h6>
+        <div class="btn-container">
+            <a href="{% url 'sahamapp:deleteService' service.serviceId %}"><button  class="btn" type="button" >Delete</button></a>
+            <a href="{% url 'sahamapp:editService' service.serviceId %}"><button class="btn" type="button">Edit</button></a>
+        </div>
+       
+
+    </div>
+    {%endfor%}
+    </div>
+   
+    <a href="{% url 'sahamapp:addServiceFL' freelancer.freelancerId %}"><button class="btn btn-center" type="button">Add Service</button></a>
+
 </div>
 
 {% endblock %}

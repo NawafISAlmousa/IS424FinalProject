@@ -1,0 +1,23 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="editService-container">
+    <h1 class="heading">Edit Service</h1>
+    <form class="form-el" id="editServiceForm" novalidate action="{% url 'sahamapp:editService' service.serviceId %}" method="post">
+        {% csrf_token %}
+        <input placeholder="Service Name" type="text" name="serviceName" id="serviceName" value="{{ service.name }}" required>
+        <input placeholder="Describe Your Service" type="text" name="serviceDescription" id="serviceDescription" value="{{ service.description }}" required>
+        <input placeholder="Enter the Price" type="number" name="price" id="price" value="{{ service.price }}" required>
+        
+        <div class="btn-container">
+            <button class="btn" type="submit">Submit</button>
+            <a href="{% url 'sahamapp:editFL' service.freelancer.freelancerId %}">
+                <button class="btn" type="button">Back To Profile</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'sahamapp/scripts/editService.js' %}"></script>
+
+{% endblock %}

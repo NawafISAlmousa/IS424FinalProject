@@ -1,0 +1,22 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="addService-container">
+    <h1 class="heading">Add Service</h1>
+    <form class="form-el" id="addServiceForm" novalidate action="{% url 'sahamapp:addServiceFL' freelancer.freelancerId %}" method="post">
+        {% csrf_token %}
+        <input placeholder="Service Name" type="text" name="serviceName" id="serviceName" required>
+        <input placeholder="Describe Your Service" type="text" name="serviceDescription" id="serviceDescription" required>
+        <input placeholder="Enter the Price" type="number" name="price" id="price" required>
+        
+        <div class="btn-container">
+            <button class="btn" type="submit">Add</button>
+            <a href="{% url 'sahamapp:editFL' freelancer.freelancerId %}">
+                <button class="btn" type="button">Back To Profile</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'sahamapp/scripts/addService.js' %}"></script>
+{% endblock %}
