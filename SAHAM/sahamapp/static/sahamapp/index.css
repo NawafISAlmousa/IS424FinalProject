@@ -45,6 +45,16 @@ body {
 
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.services-container{
+    padding: 20px;
+}
+
 .heading {
     padding: 30px;
     color: #FFF;
@@ -166,7 +176,17 @@ input:focus {
     margin-left: 130px;
     margin-bottom: 10px;
  }
+.button-back-services{
+    display: block;
+    width: 190px;
+    margin: auto;
+}
 
+.btn-detailsservice{
+    display: block;
+    width: 190px;
+    margin: auto;
+}
 .btn-divs{
     margin-top: -100px;
  }

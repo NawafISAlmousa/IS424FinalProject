@@ -2,21 +2,23 @@
 {% load static %}
 {% block body %}
 <div class="services-container">
-    <h1>Booked services:</h1>
+    <h1 class="heading">Booked services:</h1>
     <div class="service-wrapper">
         {% for service in services %}
     <div class="service-el">
-        <h2>{{service.freelancer.name}}</h2>
-        <h3>{{service.name}}</h3>
-        <h6>{{service.price}} SAR</h6>
-        <div class="btn-container">
+        <h2 class="details-heading">{{service.freelancer.name}}</h2>
+        <h3 class="details-heading">{{service.name}}</h3>
+        <h6 class="details-heading">{{service.price}} SAR</h6>
+        <div class="btn-container btn-detailsservice">
             <a href="{% url 'sahamapp:showService' username service.serviceId  %}"><button class="btn" type="button">Details</button></a>
-            
         </div>
        
 
     </div>
     {%endfor%}
+    <a href="{% url 'sahamapp:showServices' username %}" class="button-back-services">
+        <button class="btn btn-bookservice" type="button">Back to Services</button>
+    </a>
     </div>
 
 </div>

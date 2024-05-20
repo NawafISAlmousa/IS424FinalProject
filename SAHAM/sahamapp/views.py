@@ -152,8 +152,9 @@ def showService(request, username, serviceId):
     return render(request, 'sahamapp/showService.html', {'username': username, 'service':service})
 
 def bookedServices(request, username):
-    services = Customer.objects.get(userName=username).bookedServices
-    return render(request, 'sahamapp/showServices.html', {
+    customer = get_object_or_404(Customer, userName=username)
+    services = customer.bookedServices.all()
+    return render(request, 'sahamapp/bookedServices.html', {
         'services': services,
         'username': username
     })

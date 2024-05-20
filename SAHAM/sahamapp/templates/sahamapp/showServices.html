@@ -2,14 +2,20 @@
 {% load static %}
 {% block body %}
 <div class="services-container">
-    <h1>Available services:</h1>
+    <div class="header">
+        <h1 style="margin: 0; color: white; font-weight: bold;">Available services:</h1> 
+        <a href="{% url 'sahamapp:index' %}" >
+            <button class="btn btn-bookservice" type="button">Log Out</button>
+        </a>
+    </div>
+    
     <div class="service-wrapper">
         {% for service in services %}
     <div class="service-el">
-        <h2>{{service.freelancer.name}}</h2>
-        <h3>{{service.name}}</h3>
-        <h6>{{service.price}} SAR</h6>
-        <div class="btn-container">
+        <h2 class="details-heading">{{service.freelancer.name}}</h2>
+        <h3 class="details-heading">{{service.name}}</h3>
+        <h6 class="details-heading">{{service.price}} SAR</h6>
+        <div class="btn-container btn-detailsservice">
             <a href="{% url 'sahamapp:showService' username service.serviceId  %}"><button class="btn" type="button">Details</button></a>
         </div>
        
