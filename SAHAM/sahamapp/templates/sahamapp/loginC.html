@@ -3,17 +3,17 @@
 {% block body %}
 <div class="login-container">
     <h1 class="heading">Login</h1>
-    <form class="form-el" id="LoginForm" novalidate action="{%url 'sahamapp:loginFL'%}" method="post">
+    <form class="form-el" id="LoginForm" novalidate action="{%url 'sahamapp:loginC'%}" method="post">
         {% csrf_token %}
-        <input placeholder="E-mail" type="email" name="email" id="email" required>
+        <input placeholder="Username" type="text" name="username" id="username" required>
         <input placeholder="Password" type="password" name="password" id="password" required>
         <div class="btn-container">
             <button class="btn" type="submit">Login</button>
-            <a href="{% url 'sahamapp:registerFL'%}"><button class="btn" type="button" >Create Account</button></a> 
+            <a href="{% url 'sahamapp:registerC' %}"><button class="btn" type="button" >Create Account</button></a> 
         </div>
     </form>
     {% if error %}
-        <script>addEventListener("DOMContentLoaded", (event) => {alert("Email/Password incorrect")});</script>
+        <script>addEventListener("DOMContentLoaded", (event) => {alert("Email/Password incorrect")})</script>
     {% endif %}
     {% if registrationComplete %}
     <script>addEventListener("DOMContentLoaded", (event) => {alert("Registration Complete, Please Log in")})</script>

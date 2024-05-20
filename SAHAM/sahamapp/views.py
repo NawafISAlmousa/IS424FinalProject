@@ -38,14 +38,9 @@ def registerFreelancer(request):
                                 name = form["username"],
                                 phonenumber = form["phonenumber"])
         freelancer.save()
-        return render(request, 'sahamapp/index.html')
-        
-    # freelancerId = models.CharField(max_length=6,primary_key=True)
-    # email = models.EmailField(max_length=256,unique=True)
-    # password = models.CharField(max_length=32, validators=[MinLengthValidator(6)])
-    # description = models.CharField(max_length=500)
-    # name = models.CharField(max_length=32, validators=[MinLengthValidator(3)])
-    # phonenumber = models.CharField(max_length=10, validators=[MinLengthValidator(10)])
+        return render(request, 'sahamapp/loginFL.html', {
+            'registrationComplete': True
+        })
     return render(request,'sahamapp/registerFL.html')
 
 
@@ -56,13 +51,9 @@ def loginFreelancer(request):
         print(current)
         if current.exists():
             if current[0].password == form["password"]:
-                # TESTING
                 return redirect(reverse('sahamapp:editFL', kwargs={'freelancerId': current[0].freelancerId}))
-            return render(request, "sahamapp/loginFL.html",{
-                   'error':True
-                })
-            
-        
+        return render(request, "sahamapp/loginFL.html",{
+            'error':True})   
     return render(request , "sahamapp/loginFL.html")
 
 def editpage(request, freelancerId):
@@ -109,3 +100,60 @@ def editService(request, serviceId):
     return render(request, 'sahamapp/editService.html', {'serviceId': serviceId, 'service':service})
 
 
+# Customer views
+
+def generateUniqueIdCustomer():
+    length = 6
+    characters = string.ascii_letters + string.digits
+    while True:
+        new_id = ''.join(random.choices(characters, k=length))
+        if not Customer.objects.filter(customerId=new_id).exists():
+            return new_id
+
+def loginCustomer(request):
+    if request.method == "POST":
+        form = request.POST
+        current = Customer.objects.filter(userName = form["username"])
+        if current.exists():
+            if current[0].password == form["password"]:
+                # TESTING
+                return redirect(reverse('sahamapp:showServices', kwargs={'username': current[0].userName}))
+        return render(request, "sahamapp/loginC.html",{
+                'error':True})
+    return render(request , "sahamapp/loginC.html")
+
+def registerCustomer(request):
+    if request.method == "POST":
+        form = request.POST
+        existing = Customer.objects.filter(userName = form["username"]).exists()
+        if existing :
+                    return render(request, 'sahamapp/registerC.html', {
+            'UsernameUsed': True
+        })
+        customer = Customer(userName = form["username"],
+                                password = form["password"])
+        customer.save()
+        return render(request, 'sahamapp/loginC.html', {
+            'registrationComplete': True
+        })
+    return render(request,'sahamapp/registerC.html')
+
+def showServices(request, username):
+    services = Service.objects.all()
+    return render(request, 'sahamapp/showServices.html', {
+        'services': services,
+        'username': username
+    })
+def showService(request, username, serviceId):
+    service = Service.objects.filter(serviceId=serviceId)[0]
+    if request.method == "POST":
+        Customer.objects.get(userName=username).bookedServices.add(service)
+        return redirect(reverse('sahamapp:bookedServices', kwargs = {'username': username}))
+    return render(request, 'sahamapp/showService.html', {'username': username, 'service':service})
+
+def bookedServices(request, username):
+    services = Customer.objects.get(userName=username).bookedServices
+    return render(request, 'sahamapp/showServices.html', {
+        'services': services,
+        'username': username
+    })

@@ -5,13 +5,20 @@ body {
 
 }
 
-.register-container,.login-container,.edit-container,.addService-container,.editService-container{
+.register-container,.login-container,.edit-container,.addService-container,.editService-container,.service-container,.services-container,.showService-container{
     width: 626px;
     height: 772px;
     background-color: #3A8773;
     margin: 132px auto;
     border-radius: 10px;
     box-shadow: 6px 6px 4px black;
+}
+#Customer-Register{
+    height: 520px;
+}
+
+#show-services{
+    height: 100%;
 }
 
 .edit-container{
@@ -21,12 +28,22 @@ body {
 .homepage-container {
     width: 650px;
     height: 350px;
-    background: #0eae88;
+    background: #3A8773;
     margin: 132px auto;
     border-radius: 10px;
     border: 5px solid black;
 }
 
+#service-details{
+    padding-top: 40px;
+}
+
+.details-heading {
+    padding: 5px;
+    color: #FFF;
+    text-align: center;
+
+}
 
 .heading {
     padding: 30px;
@@ -124,6 +141,10 @@ input:focus {
     height: 100%;
 }
 
+.services-container{
+    height: 100%;
+}
+
 .service-wrapper{
     display: flex;
     flex-direction: column;
@@ -141,3 +162,11 @@ input:focus {
    margin-left: 220px;
    margin-bottom: 10px;
 }
+.button-center-service{
+    margin-left: 130px;
+    margin-bottom: 10px;
+ }
+
+.btn-divs{
+    margin-top: -100px;
+ }

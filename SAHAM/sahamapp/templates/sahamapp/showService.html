@@ -1,0 +1,28 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="showService-container" id="show-services" >
+    <h1 class="details-heading" id="service-details">Service Details</h1>
+    <h3 class="details-heading">Freelancer: {{service.freelancer.name}}</h3>
+    <h3 class="details-heading">Service: {{service.name}}</h3>
+    <h3 class="details-heading">Description: {{service.description}}</h3>
+    <h3 class="details-heading">Price: {{service.price}} SAR</h3>
+        <div class="btn-container">
+    <form class="form-el" id="editServiceForm" novalidate action="{% url 'sahamapp:showService' username service.serviceId %}" method="post">
+    {% csrf_token %}
+    <div class="btn-divs">
+    <button class="btn button-center-service" type="submit">Book Service</button>
+    <a href="{% url 'sahamapp:showServices' username %}">
+        <button class="btn button-center-service" type="button">Back to Services</button>
+    </a>
+    </div>
+    </form>
+            
+
+        </div>
+
+</div>
+
+<script src="{% static 'sahamapp/scripts/editService.js' %}"></script>
+
+{% endblock %}

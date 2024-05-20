@@ -1,0 +1,21 @@
+{% extends 'sahamapp/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="register-container" id="Customer-Register">
+    <h1 class="heading">Registration</h1>
+    <form class="form-el" id="registrationForm" novalidate action="{%url 'sahamapp:registerC'%}" method="post">
+        {% csrf_token %}
+        <input placeholder="Username" type="text" name="username" id="username" required>
+        <input placeholder="Password" type="password" name="password" id="password" required>
+        <div class="btn-container">
+            <button class="btn" type="submit">Register</button>
+           <a href="{% url 'sahamapp:loginC'%}"><button class="btn" type="button" onclick="location.href='/login'">Login Instead</button></a>
+           
+        </div>
+    </form>
+</div>
+    {% if UsernameUsed %}
+    <script>addEventListener("DOMContentLoaded", (event) => {alert("Username Already Used")})</script>
+    {% endif %}
+<script src="{% static 'sahamapp/scripts/registerC.js' %}"></script>
+{% endblock %}
