@@ -11,6 +11,9 @@
             <button class="btn" type="submit">Login</button>
             <a href="{% url 'sahamapp:registerC' %}"><button class="btn" type="button" >Create Account</button></a> 
         </div>
+        <a href="{% url 'sahamapp:index' %}" class="btn-detailsservice">
+            <button class="btn btn-bookservice" type="button">Back to Main Menu</button>
+        </a>
     </form>
     {% if error %}
         <script>addEventListener("DOMContentLoaded", (event) => {alert("Email/Password incorrect")})</script>
