@@ -1,4 +1,3 @@
-
     document.getElementById('addServiceForm').addEventListener('submit', function(event) {
         var serviceName = document.getElementById('serviceName').value;
         var serviceDescription = document.getElementById('serviceDescription').value;

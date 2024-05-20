@@ -1,8 +1,7 @@
-
     document.getElementById('editServiceForm').addEventListener('submit', function(event) {
-        var serviceName = document.getElementById('serviceName').value;
-        var serviceDescription = document.getElementById('serviceDescription').value;
-        var price = document.getElementById('price').value;
+        let serviceName = document.getElementById('serviceName').value;
+        let serviceDescription = document.getElementById('serviceDescription').value;
+        let price = document.getElementById('price').value;
 
         if (!serviceName || !serviceDescription || !price) {
             event.preventDefault();
