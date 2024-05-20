@@ -102,21 +102,12 @@ def editService(request, serviceId):
 
 # Customer views
 
-def generateUniqueIdCustomer():
-    length = 6
-    characters = string.ascii_letters + string.digits
-    while True:
-        new_id = ''.join(random.choices(characters, k=length))
-        if not Customer.objects.filter(customerId=new_id).exists():
-            return new_id
-
 def loginCustomer(request):
     if request.method == "POST":
         form = request.POST
         current = Customer.objects.filter(userName = form["username"])
         if current.exists():
             if current[0].password == form["password"]:
-                # TESTING
                 return redirect(reverse('sahamapp:showServices', kwargs={'username': current[0].userName}))
         return render(request, "sahamapp/loginC.html",{
                 'error':True})
